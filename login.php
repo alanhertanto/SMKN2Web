@@ -21,20 +21,15 @@ if($numrows==0){
 	 	echo "<script>alert('Salah Password atau Username');location.replace('index.php');</script>";	
 	}else{
 		if($row1['hak']=="2"){
-			$result1 = mysqli_query($connect,"SELECT users.*,data_siswa.* FROM users INNER JOIN data_siswa ON data_siswa.id_user = users.id_user WHERE users.username ='$username'");
-			$row = mysqli_fetch_array($result1);
 			echo "<script>alert('Silahkan Akses Menggunakan Aplikasi!');location.replace('index.php');</script>";	
 
 		}
 		if($row1['hak']=="0"){
 			$_SESSION['hak']=$row1['hak'];
 			$_SESSION['id_user']=$row1['id_user'];
+			$result1 = mysqli_query($connect,"SELECT users.*,data_siswa.* FROM users INNER JOIN data_siswa ON data_siswa.id_user = users.id_user WHERE users.username ='$username'");
+			$row = mysqli_fetch_array($result1);
 			echo "<script>alert('Selamat Datang Admin !');location.replace('halaman/admin/index.php');</script>";	
-		}
-		if($row1['hak']=="1"){
-			$_SESSION['hak']=$row1['hak'];
-			$_SESSION['id_user']=$row1['id_user'];
-			echo "<script>alert('Selamat Datang Guru !');location.replace('halaman/guru/index.php');</script>";	
 		}
 	}
 }

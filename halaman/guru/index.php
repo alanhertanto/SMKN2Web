@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin SMKN 2 Kuningan</title>
+    <title>Panel Guru SMKN 2 Kuningan</title>
     <link rel="apple-touch-icon" sizes="57x57" href="../../assets//apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../../assets//apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="../../assets//apple-icon-72x72.png">
@@ -53,7 +53,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin <sup>SMKN 2</sup></div>
+                <div class="sidebar-brand-text mx-3">Panel Guru <sup>SMKN 2</sup></div>
             </a>
 
             <!-- Divider -->

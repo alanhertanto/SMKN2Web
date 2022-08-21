@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-md-12 mb-12">
                             <center>
-                                <h1>Selamat Datang Di Halaman Admin SMKN 2 Kuningan</h1>
+                                <h1>Selamat Datang Di Halaman Guru SMKN 2 Kuningan</h1>
                                 <br>
                                 <img src="admin.png" width="400" height="400">
                             </center>
