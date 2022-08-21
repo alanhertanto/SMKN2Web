@@ -31,6 +31,11 @@ if($numrows==0){
 			$_SESSION['id_user']=$row1['id_user'];
 			echo "<script>alert('Selamat Datang Admin !');location.replace('halaman/admin/index.php');</script>";	
 		}
+		if($row1['hak']=="1"){
+			$_SESSION['hak']=$row1['hak'];
+			$_SESSION['id_user']=$row1['id_user'];
+			echo "<script>alert('Selamat Datang Guru !');location.replace('halaman/guru/index.php');</script>";	
+		}
 	}
 }
 
