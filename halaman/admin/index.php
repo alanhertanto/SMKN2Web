@@ -80,10 +80,10 @@
                 </a>
                 <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../siswa/index.php" target="frame">Data & Akun Siswa</a>
+                        <a class="collapse-item" href="../akun_siswa/index.php" target="frame">Data & Akun Siswa</a>
                     </div>
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../akunguru/index.php" target="frame">Data & Akun Guru</a>
+                        <a class="collapse-item" href="../akun_guru/index.php" target="frame">Data & Akun Guru</a>
                     </div>
                 </div>
             </li>

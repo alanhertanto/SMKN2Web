@@ -103,7 +103,7 @@
                 </a>
                 <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../siswa/index.php" target="frame">Data & Akun Siswa</a>
+                        <a class="collapse-item" href="../akun_guru/index.php" target="frame">Akun Guru</a>
                         <div class="collapse-divider"></div>
                         <a class="collapse-item" href="../../logout.php">Logout</a>
                     </div>

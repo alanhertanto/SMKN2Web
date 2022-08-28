@@ -6,7 +6,7 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Data Penduduk</title>
+  <title>Data Guru</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -37,8 +37,9 @@ session_start();
       </head>
       <body>
         <!-- Site wrapper -->
-        <div class="wrapper">
+        <div class="wrapper" style="margin-left:-120px;">
           <!-- Left side column. contains the sidebar -->
+          <div class="content-wrapper">
             <!-- Main content -->
             <section class="content">
               <!-- Default box -->
@@ -49,9 +50,7 @@ session_start();
                     <thead>
                       <tr class="tableheader">
                         <th>#</th>
-                        <th>Mulai</th>
-                        <th>Berakhir</th>
-                        <th>Ulangan Ke</th>
+                        <th>Nama</th>
                         <th>Button</th>
                       </tr>
                     </thead>
@@ -66,30 +65,23 @@ session_start();
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">×</button>
-                      <h4 class="modal-title">Data guru</h4>
+                      <h4 class="modal-title">Data Guru</h4>
                     </div>
                     <!--modal header-->
                     <div class="modal-body">
                       <div class="pad" id="infopanel"></div>
                       <div class="form-horizontal">
                         <div class="form-group"> 
-                          <label class="col-sm-3  control-label">Ulangan Ke</label>
+                          <label class="col-sm-3  control-label">Username</label>
                           <div class="col-sm-9">
-                              <input type="text" class="form-control" id="txtulanganke" readonly>
+                              <input type="text" class="form-control" id="txtuser">
                               <input type="hidden" id="crudmethod" value="N"> 
-                              <input type="hidden" id="txtid" value="0">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3  control-label">Mulai</label>
+                            <label class="col-sm-3  control-label">Password</label>
                           <div class="col-sm-9">
-                              <input type="datetime-local" class="form-control" id="txtawal">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3  control-label">Berakhir</label>
-                          <div class="col-sm-9">
-                              <input type="datetime-local" class="form-control" id="txtakhir">
+                              <input type="password" class="form-control" id="txtpass">
                           </div>
                         </div>
                         <div class="form-group"> 
@@ -118,7 +110,9 @@ session_start();
       immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
-
+</section>
+</div>
+</div>
     <!-- jQuery 2.1.4 -->
     <script src="../../assets/dt/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
@@ -139,83 +133,38 @@ session_start();
     <script src="../../assets/dt/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script src="../../assets/dt/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript">
- $(document).ready( function () 
-    {
-      $('#table_cust').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": false,
-        "responsive": true,
-        "autoWidth": false,
-        "pageLength": 10,
-        "ajax": {
-          "url": "data.php",
-          "type": "POST"
-        },
-        "columns": [
-        { "data": "urutan" },
-        { "data": "starting_time" },
-        { "data": "end_time" },
-        { "data": "ulanganke" },
-        { "data": "button" },
-        ]
-      });
-
-
+    $(document).ready( function () {
+    $('#table_cust').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": false,
+      "responsive": true,
+      "autoWidth": false,
+      "pageLength": 10,
+      "ajax": {
+        "url": "data.php",
+        "type": "GET"
+      },
+      "columns": [
+      { "data": "urutan" },
+      { "data": "username"},
+      { "data": "button"}
+      ]
     });
-    $(document).on( "click",".btnhapus", function() {
-      var id_jadwal = $(this).attr("id_jadwal");
-      var ulanganke = $(this).attr("ulanganke");
-      swal({   
-        title: "Delete Jadwal Ulangan Ke?",   
-        text: "Delete Jadwal Ulangan Ke : "+ulanganke+" ?",   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Hapus",   
-        closeOnConfirm: true }, 
-        function(){   
-          var value = {
-            id_jadwal: id_jadwal
-          };
-          $.ajax(
-          {
-            url : "delete.php",
-            type: "POST",
-            data : value,
-            success: function(data, textStatus, jqXHR)
-            {
-              var data = jQuery.parseJSON(data);
-              if(data.result ==1){
-                $.notify('Berhasil Hapus Data Ulangan');
-                var table = $('#table_cust').DataTable(); 
-                table.ajax.reload( null, false );
-              }else{
-                swal("Error","Tidak dapat hapus data ulangan, error : "+data.error,"error");
-              }
-
-            },
-            error: function(jqXHR, textStatus, errorThrown)
-            {
-             swal("Error!", textStatus, "error");
-            }
-          });
-        });
-    });
+  });
     $(document).on("click","#btnsave",function(){
-      var id_jadwal = $("#txtid").val();
-      var ulanganke =  $("#txtulanganke").val();
-      var awal =  $("#txtawal").val();
-      var akhir =  $("#txtakhir").val();
-      var crud = $("#crudmethod").val();
-
+      var password =  $("#txtpass").val();
+      var username = $("#txtuser").val();
+      var crud=$("#crudmethod").val();
+      var form_data = new FormData();                  
+      form_data.append('username',username)
+      form_data.append('crud',crud)
+      form_data.append('password',password)
       var value = {
-        id_jadwal : id_jadwal,
-        mulai : awal,
-        ulanganke : ulanganke,
-        selesai : akhir,
+        password : password,
+        username:username,
         crud : crud
       };
       $.ajax(
@@ -225,73 +174,37 @@ session_start();
         data : value,
         success: function(data, textStatus, jqXHR)
         {
-          var data = jQuery.parseJSON(data);
-          if(data.crud == 'N'){
-            if(data.result == 1){
-              $.notify('Berhasil menyimpan data');
-              var table = $('#table_cust').DataTable(); 
-              table.ajax.reload( null, false );
-              $("#modalcust").modal('hide');
-              $("#txtulanganke").focus();
-              $("#txtulanganke").val("");
-              $("#txtawal").val("");
-              $("#txtakhir").val("");
-              $("#crudmethod").val("N");
-              $("#txtid").val("0");
-            }else{
-              swal("Error","Tidak dapat menyimpan data jadwal, error : "+data.error,"error");
-            }
-          }else if(data.crud == 'E'){
-            if(data.result == 1){
-              $("#modalcust").modal('hide');
-              $.notify('Berhasil update jadwal');
+              $.notify('Berhasil update data');
               var table = $('#table_cust').DataTable(); 
               table.ajax.reload( null, true );
-              $("#txtawal").focus();
-            }else{
-             swal("Error","Tidak dapat update data jadwal, error : "+data.error,"error");
-            }
-          }else{
-            swal("Error","urutan salah","error");
-          }
+              $("#txtpass").focus();
+              $("#modalcust").modal('hide');
         },
-        error: function(jqXHR, textStatus, errorThrown)
-        {
-           swal("Error!", textStatus, "error");
-        }
+
       });
     });
     $(document).on("click",".btnedit",function(){
-      var id_jadwal=$(this).attr("id_jadwal");
-      var value = {
-        id_jadwal: id_jadwal
-      };
       $.ajax(
       {
         url : "get_cust.php",
         type: "POST",
-        data : value,
         success: function(data, textStatus, jqXHR)
         {
           var data = jQuery.parseJSON(data);
           $("#crudmethod").val("E");
-          $("#txtid").val(data.id_jadwal);
-          $("#txtulanganke").val(data.ulanganke);
-          $("#txtawal").val(data.mulai);
-          $("#txtakhir").val(data.selesai);
 
+          $("#txtpass").focus();
+          $("#txtpass").val(data.password);
+          $("#txtuser").val(data.username);
           $("#modalcust").modal('show');
-          $("#txtawal").focus();
+
         },
-        error: function(jqXHR, textStatus, errorThrown)
-        {
-          swal("Error!", textStatus, "error");
-        }
       });
     });
     $.notifyDefaults({
       type: 'success',
       delay: 500
-    });    </script>
+    });
+    </script>
   </body>
   </html>

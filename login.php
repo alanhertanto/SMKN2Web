@@ -20,9 +20,14 @@ if($numrows==0){
 	if($numrows2==0){
 	 	echo "<script>alert('Salah Password atau Username');location.replace('index.php');</script>";	
 	}else{
+		if($row1['hak']=="1"){
+			echo "<script>alert('Selamat Datang Guru!');location.replace('halaman/guru/index.php');</script>";	
+			session_destroy();
+
+		}
 		if($row1['hak']=="2"){
 			echo "<script>alert('Silahkan Akses Menggunakan Aplikasi!');location.replace('index.php');</script>";	
-
+			session_destroy();
 		}
 		if($row1['hak']=="0"){
 			$_SESSION['hak']=$row1['hak'];
