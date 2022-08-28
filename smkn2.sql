@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 18, 2022 at 10:17 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.4.19
+-- Host: localhost:8889
+-- Generation Time: Aug 28, 2022 at 12:52 PM
+-- Server version: 5.7.34
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -109,7 +109,8 @@ CREATE TABLE `data_pelajaran` (
 
 INSERT INTO `data_pelajaran` (`id_pelajaran`, `nama_materi`, `pdf`) VALUES
 (1, 'Seni Budaya Kelas 10', 'http://sman1kotatangsel.com/pusdatin/downloads/Kelas%20X%20Seni%20Budaya%20BS%20Sem%201.pdf'),
-(2, 'Bahasa Indonesia Kelas 10', 'http://staffnew.uny.ac.id/upload/131873960/pengabdian/buku-pelajaran-bahasa-indonesia-smk-kelas-10.pdf');
+(2, 'Bahasa Indonesia Kelas 10', 'http://staffnew.uny.ac.id/upload/131873960/pengabdian/buku-pelajaran-bahasa-indonesia-smk-kelas-10.pdf'),
+(5, 'Bahasa Inggris Kelas 10', 'https://static.buku.kemdikbud.go.id/content/pdf/bukuteks/kurikulum21/Bahasa-Inggris-BS-KLS-X.pdf');
 
 -- --------------------------------------------------------
 
@@ -136,7 +137,12 @@ CREATE TABLE `data_siswa` (
 
 INSERT INTO `data_siswa` (`id_siswa`, `nisn`, `nama`, `kelas`, `alamat`, `jk`, `tanggal_lahir`, `tempat_lahir`, `foto`, `id_user`) VALUES
 (1, '12345789', 'Test 1', 'RPL2', 'Pliss', 'Laki-laki', '2021-06-13', 'Kuningan', 'Marker Implan.png', 0),
-(2, '12345791', 'Test 2', 'RPL2', 'Plisszz', 'Perempuan', '2021-02-01', 'Cirebon', 'Marker IUD.png', 2);
+(2, '12345791', 'Test 2', 'RPL2', 'Plisszz', 'Perempuan', '2021-02-01', 'Cirebon', 'Marker IUD.png', 2),
+(3, '1234578999', 'Test Namanya', 'RPL4', 'Ya Test Aja', 'Laki-laki', '2015-09-28', 'Kuningan Test', '123468827_114839333738791_4471825087027521787_n.jpeg', 4),
+(5, '239189281', 'Test Data 3', 'RPL2', 'Test Data 3 Alamat', 'Perempuan', '2016-10-28', 'Lahir Test Data 3', '123525412_275332303849449_403720177289869823_n.jpeg', 4),
+(15, '22313213', 'Sikok', 'RPL6', 'Bagi Duo', 'Laki-laki', '2017-09-27', 'Ditembak Pucuk Bawah Basah', 'fitness-310380_1280.png', 4),
+(16, '3213231', 'Dung Dung', 'RPL3', 'Sikok', 'Laki-laki', '2021-09-25', 'Bagi Duo', 'WhatsApp Image 2021-12-30 at 12.45.02.jpeg', 4),
+(19, '312831782', 'tinky winky', 'RPL2', 'dipsy', 'Laki-laki', '2018-09-29', 'lala po', 'big-full-moon-night-horizon-scenery-uhdpaper.com-4K-6.937.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -283,7 +289,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `hak`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(2, 'siswa1', '013f0f67779f3b1686c604db150d12ea', 2);
+(2, 'siswa1', '013f0f67779f3b1686c604db150d12ea', 2),
+(3, 'guru', '77e69c137812518e359196bb2f5e9bb9', 1);
 
 --
 -- Indexes for dumped tables
@@ -376,13 +383,13 @@ ALTER TABLE `data_nilai`
 -- AUTO_INCREMENT for table `data_pelajaran`
 --
 ALTER TABLE `data_pelajaran`
-  MODIFY `id_pelajaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pelajaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `data_siswa`
 --
 ALTER TABLE `data_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `data_soal`
@@ -394,7 +401,7 @@ ALTER TABLE `data_soal`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
