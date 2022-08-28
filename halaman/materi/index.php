@@ -47,6 +47,9 @@ session_start();
                  <div class="box-body">
                   <table id="table_cust" class="table table-striped table-bordered table-hover">
                     <thead>
+                 <button type="submit" class="btn btn-primary " id="btnadd" name="btnadd"><i class="fa fa-plus"></i> Tambah Data Materi</button>
+                 <br>
+                 <br>
                       <tr class="tableheader">
                         <th>#</th>
                         <th>Nama Materi</th>
@@ -149,10 +152,10 @@ session_start();
         },
         "columns": [
         { "data": "urutan" },
-        { "data": "nama" },
+        { "data": "nama_materi" },
         { "data": "pdf",
           render:function ( data, type, row, meta ) {
-          return '<a href="'+data+'"/>';
+          return '<a href="'+data+'" target="_blank">Link</a>';
         }},
         { "data": "button" },
         ]
@@ -160,6 +163,17 @@ session_start();
 
 
     });
+
+      $(document).on("click","#btnadd",function(){
+        $("#modalcust").modal("show");
+        $("#txtnama").val("");
+        $("#txtpdf").val("");
+        $("#crudmethod").val("N");
+        $("#txtid").val("0");
+    });
+
+
+
     $(document).on( "click",".btnhapus", function() {
       var id_pelajaran = $(this).attr("id_pelajaran");
       var nama = $(this).attr("nama");

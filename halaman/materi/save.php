@@ -1,32 +1,33 @@
 <?php
 include "../../config.php";
-$id_penduduk = $_POST['id_penduduk'];
-$nik = $_POST['nik'];
-$alamat_usaha = $_POST['alamat_usaha'];
-$no_kk = $_POST['kk'];
-$nama = $_POST['nama'];
-$alamat = $_POST['alamat'];
-$penghasilan = $_POST['penghasilan'];
-$pengeluaran = $_POST['pengeluaran']; 
-$tanggungan = $_POST['tanggungan'];
-$surat_rekomendasi = $_POST['surat_rekomendasi']; 
-$kelayakan_huni = $_POST['kelayakan_hunian']; 
-$crud = $_POST['crud'];
-if($crud == 'E'){
-	$resultx = mysqli_query($connect,"UPDATE `data_penduduk` SET `no_kk`='$no_kk',`alamat_usaha`='$alamat_usaha',`nik`='$nik',`alamat`='$alamat',`nama`='$nama',`penghasilan`='$penghasilan',`pengeluaran`='$pengeluaran',`tanggungan`='$tanggungan',`kelayakan_huni`='$kelayakan_huni',`surat_rekomendasi`='$surat_rekomendasi' WHERE id_penduduk=$id_penduduk");
-	if(!$resultx){
-		$result['error']='';
+$id_pelajaran = $_POST['id_pelajaran'];
+$nama_materi = $_POST['nama'];
+$pdf = $_POST['pdf'];
+
+$crud=$_POST['crud'];
+
+if($crud=='N'){
+	$res = mysqli_query($connect,"insert into data_pelajaran(id_pelajaran,pdf,nama_materi) values(NULL,'$pdf','$nama_materi')");
+	if(mysqli_error($connect)){
+		$result['error']=mysqli_error($connect);
 		$result['result']=0;
 	}else{
 		$result['error']='';
 		$result['result']=1;
 	}
+}else if($crud == 'E'){
+		$res = mysqli_query($connect,"update data_pelajaran set pdf='$pdf', nama_materi='$nama_materi' where id_pelajaran='$id_pelajaran'");
+		if(mysqli_error($connect)){
+			$result['error']=mysqli_error($connect);
+			$result['result']=0;
+		}else{
+			$result['error']='';
+			$result['result']=1;
+		}
 }else{
-
-	$result['error']='Salah Urutan!';
+	$result['error']='Invalid Order';
 	$result['result']=0;
 }
 $result['crud']=$crud;
 echo json_encode($result);
-
 ?>

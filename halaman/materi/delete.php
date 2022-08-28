@@ -1,11 +1,11 @@
 <?php
 include "../../config.php";
 
-$id_penduduk = $_POST['id_penduduk'];
+$id_pelajaran = $_POST['id_pelajaran'];
 
-mysql_query("delete from data_penduduk where id_penduduk=$id_penduduk");
-if(mysql_error()){
-	$result['error']=mysql_error();
+mysqli_query($connect,"delete from data_pelajaran where id_pelajaran=$id_pelajaran");
+if(!$result){
+	$result['error']='Gagal!';
 	$result['result']=0;
 }else{
 	$result['error']='';
